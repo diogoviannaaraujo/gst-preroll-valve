@@ -73,9 +73,9 @@ def run_pipeline(output_dir: str) -> tuple[int, list[str]]:
         f"! prerollvalve name=valve open=false max-history={MAX_HISTORY_MS} debug=true "
         "! identity name=counter silent=true signal-handoffs=true "
         "! queue "
-        "! splitmuxsink name=mux "
+        "! splitmuxsink name=mux async-finalize=true"
         f"max-size-time={SPLIT_DURATION_NS} "
-        f'reset-muxer=true location="{output_pattern}" '
+        f'location="{output_pattern}" '
         "muxer=matroskamux"
     )
 
