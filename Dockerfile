@@ -42,6 +42,10 @@ COPY test_plugin.py /app/test_plugin.py
 # Make built plugin discoverable for GStreamer
 ENV GST_PLUGIN_PATH=/app/target/release
 
+# Provide a bind-mount-friendly output directory
+RUN mkdir -p /output
+VOLUME ["/output"]
+
 # Default command runs the Python test
 CMD ["python3", "/app/test_plugin.py"]
 
